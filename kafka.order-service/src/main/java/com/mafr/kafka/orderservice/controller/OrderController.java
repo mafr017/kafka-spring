@@ -47,6 +47,7 @@ public class OrderController {
             OrderEvent event = new OrderEvent();
             event.setOrder(param);
 
+            orderProducer.sendMessageCatalog(event);
             orderProducer.sendMessage(event);
 
             return response;

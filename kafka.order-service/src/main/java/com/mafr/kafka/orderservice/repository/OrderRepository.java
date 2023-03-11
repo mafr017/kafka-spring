@@ -13,7 +13,9 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
     @Query(value = "Update orders Set status_user = :statusUser Where id = :idUser", nativeQuery = true)
     void setStatusUser(@Param("idUser") Long id, @Param("statusUser") String status);
 
-//    @Modifying
-//    @Query("Update orders Set status_order = ?2 Where id = ?1")
-//    Long setStatusOrder(Long id, String status);
+    @Transactional
+    @Modifying
+    @Query(value = "Update orders Set status_order = :statusOrder Where id = :idUser", nativeQuery = true)
+    void setStatusOrder(@Param("idUser") Long id, @Param("statusOrder") String status);
+
 }

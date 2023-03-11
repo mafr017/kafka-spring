@@ -33,8 +33,8 @@ public class UserConsumer {
             service.setStatusUser(event.getOrder());
         }
 
-//        if (Objects.equals(event.getOrder().getStatusUser(), "0")) {
-//            service.setStatusOrder(event.getOrder());
-//        }
+        if (Objects.equals(event.getOrder().getStatusUser(), "0")) {
+            service.setStatusOrder(event.getOrder());
+        }
     }
 }

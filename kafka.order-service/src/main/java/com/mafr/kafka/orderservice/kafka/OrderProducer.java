@@ -15,6 +15,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderProducer {
 
+    @Value("${spring.kafka.topic.user}")
+    private String topicName;
+    @Value("${spring.kafka.topic.catalog}")
+    private String topicCatalog;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderProducer.class);
 
     private NewTopic topic;
@@ -27,14 +32,20 @@ public class OrderProducer {
     }
 
     public void sendMessage(OrderEvent event){
-//        LOGGER.info(String.format("Order event => %s", event.toString()));
-
-        // create Message
+        LOGGER.info(String.format("topic.name() => %s", topicName));
         Message<OrderEvent> message = MessageBuilder
                 .withPayload(event)
-                .setHeader(KafkaHeaders.TOPIC, topic.name())
+                .setHeader(KafkaHeaders.TOPIC, topicName)
                 .build();
-//        LOGGER.info(String.format("topic.name() => %s", topic.name()));
+        kafkaTemplate.send(message);
+    }
+
+    public void sendMessageCatalog(OrderEvent event){
+        LOGGER.info(String.format("topic.name() => %s", topicCatalog));
+        Message<OrderEvent> message = MessageBuilder
+                .withPayload(event)
+                .setHeader(KafkaHeaders.TOPIC, topicCatalog)
+                .build();
         kafkaTemplate.send(message);
     }
 }

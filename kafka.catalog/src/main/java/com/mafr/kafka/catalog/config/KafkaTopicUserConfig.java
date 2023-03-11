@@ -1,4 +1,4 @@
-package com.mafr.kafka.orderservice.config;
+package com.mafr.kafka.catalog.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,13 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 
 @Configuration
-public class KafkaTopicConfig {
+public class KafkaTopicUserConfig {
 
-    @Value("${spring.kafka.topic.user}")
+    @Value("${spring.kafka.topic.order}")
     private String topicName;
-    @Value("${spring.kafka.topic.catalog}")
-    private String topicCatalog;
 
+    // spring bean for kafka topic
     @Bean
     public NewTopic topic(){
         System.out.println("topicName: "+topicName);

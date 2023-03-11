@@ -20,6 +20,8 @@ public class OrderEntity {
     private Long userID;
     @NotNull
     private Long catalogID;
+    @NotNull
+    private Long quantity;
     private String statusOrder = "Pending...";
     private String statusUser = "Pending...";
 }

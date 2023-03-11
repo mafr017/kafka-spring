@@ -13,5 +13,5 @@ public interface OrderService {
 
     void setStatusUser(OrderEntity order);
 
-//    void setStatusOrder(OrderEntity order);
+    void setStatusOrder(OrderEntity order);
 }

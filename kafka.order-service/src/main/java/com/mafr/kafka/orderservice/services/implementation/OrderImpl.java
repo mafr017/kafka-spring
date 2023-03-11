@@ -2,7 +2,6 @@ package com.mafr.kafka.orderservice.services.implementation;
 
 import com.mafr.kafka.orderservice.entity.OrderEntity;
 import com.mafr.kafka.orderservice.repository.OrderRepository;
-import com.mafr.kafka.orderservice.repository.OrderRepositoryCustom;
 import com.mafr.kafka.orderservice.services.OrderService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -40,9 +39,9 @@ public class OrderImpl implements OrderService {
         repository.setStatusUser(order.getId(), order.getStatusUser());
     }
 
-//    @Override
-//    public void setStatusOrder(OrderEntity order) {
-//        repository.setStatusOrder(order.getId(), order.getStatusOrder());
-//    }
+    @Override
+    public void setStatusOrder(OrderEntity order) {
+        repository.setStatusOrder(order.getId(), order.getStatusOrder());
+    }
 
 }
